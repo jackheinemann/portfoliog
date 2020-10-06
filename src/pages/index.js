@@ -4,6 +4,7 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 import LandingBio from "../components/landing-bio"
+import LandingDesc from "../components/landing-desc"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -40,6 +41,8 @@ const IndexPage = ({ data }) => (
     <LandingBio />
     <Content>
         <h1>Blog</h1>
+        <LandingDesc />
+        <hr/>
         {data.allMarkdownRemark.edges
           .filter(({ node }) => {
             const rawDate = node.frontmatter.rawDate
@@ -58,8 +61,7 @@ const IndexPage = ({ data }) => (
                 <MarkerHeader>{node.frontmatter.title}</MarkerHeader>
               </Link>
               <div>
-                <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
+                <ArticleDate>Last updated: {node.frontmatter.date}</ArticleDate>
               </div>
               <p>{node.excerpt}</p>
             </div>
